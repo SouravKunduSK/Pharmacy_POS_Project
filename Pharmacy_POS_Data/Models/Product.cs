@@ -17,9 +17,11 @@ namespace Pharmacy_POS_Data.Models
         public int Stock { get; set; }
         public DateTime? ExpiryDate { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public int BrandID { get; set; }
 
         // Navigation Property
         public Category Category { get; set; }
+        public Brand Brand { get; set; }
     }
 
 }

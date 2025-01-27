@@ -24,6 +24,7 @@ namespace Pharmacy_POS_Data
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleDetail> SaleDetails { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Brand> Brands { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -47,6 +48,12 @@ namespace Pharmacy_POS_Data
                 .HasOne(p => p.Category)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryID);
+
+            modelBuilder.Entity<Product>()
+            .HasOne(p => p.Brand)
+            .WithMany(b => b.Products)
+            .HasForeignKey(p => p.BrandID);
+
 
             modelBuilder.Entity<Sale>()
                 .HasOne(s => s.Customer)
